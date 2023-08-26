@@ -1,5 +1,5 @@
 ## Запуск сервера
 
 ```zsh
-➜ python backend/manage.py runserver
+npm run --prefix frontend dev & python backend/manage.py runserver
 ```
