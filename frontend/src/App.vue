@@ -1,41 +1,31 @@
-<template lang="pug">
-  #app
-    section.container.grid-960
-      .columns
-        .column.col-2
-        .column.col-8.col-md-12
-          header.text-center
-            h2 Create note
-          create-note
-          header.text-center
-            h2 List of notes
-          note-list
-        .column.col-2
+<template>
+  <nav>
+    <router-link to="/">Notes</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav>
+  <router-view/>
 </template>
 
-<script>
-import CreateNote from './components/CreateNote';
-import NoteList from './components/NoteList';
-
-export default {
-  name: 'app',
-
-  components: {
-    'create-note': CreateNote,
-    'note-list': NoteList,
-  },
-};
-</script>
-
-<style>
-@import url(https://fonts.googleapis.com/css?family=Eczar);
-@import url(https://fonts.googleapis.com/css?family=Work+Sans);
-
-body {
-  font-family: "Work Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  padding: 50px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Eczar", sans-serif;
+nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>

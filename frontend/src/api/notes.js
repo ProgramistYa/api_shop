@@ -1,20 +1,32 @@
-import { HTTP } from '../utils/request';
+import qs from 'qs';
+import request from '@/utils/request';
 
-export const Note = {
-  create(config) {
-    return HTTP.post('/notes/', config).then((response) => {
-      return response.data;
-    })
-  },
+export function createNote(data) {
+  const options = qs.stringify(data);
 
-  delete(note) {
-    return HTTP.delete(`/notes/${note.id}/`);
-  },
+  return request({
+    url: '/notes/',
+    method: 'post',
+    data: options,
+  });
+}
 
-  list() {
-    return HTTP.get('/notes/').then((response) => {
-      console.log(response);
-      return response.data;
-    })
-  }
+export function deleteNote(data) {
+  const options = qs.stringify(data);
+
+  return request({
+    url: `/notes/${data.id}/`,
+    method: 'delete',
+    data: options,
+  });
+}
+
+export function getNotes(data) {
+  const options = qs.stringify(data);
+
+  return request({
+    url: '/notes/',
+    method: 'get',
+    data: options,
+  });
 }

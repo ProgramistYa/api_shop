@@ -17,10 +17,8 @@
 </template>
 
 <script>
-import store from '../store';
-
 export default {
-  name: 'create-note',
+  name: 'createNote',
 
   data() {
     return {
@@ -32,19 +30,14 @@ export default {
   methods: {
     submitForm(event) {
       this.createNote();
-      // Т.к. мы уже отправили запрос на создание заметки строчкой выше,
-      // нам нужно теперь очистить поля title и body
       this.title = '';
       this.body = '';
-      // preventDefault нужно для того, чтобы страница
-      // не перезагружалась после нажатия кнопки submit
+
       event.preventDefault();
     },
 
     createNote() {
-      // Вызываем действие `createNote` из хранилища, которое
-      // отправит запрос на создание новой заметки к нашему API.
-      store.dispatch('createNote', { title: this.title, body: this.body });
+      this.$store.dispatch('notes/createNote', { title: this.title, body: this.body });
     },
   },
 };
